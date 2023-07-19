@@ -1,7 +1,8 @@
 {
-  "name": "klaviyoAutoSupresser",
+  "name": "klaviyo-auto-suppresser",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "Isak Anderson",
   "license": "MIT",
   "scripts": {
     "start": "tsc && node index.js"
@@ -9,6 +10,9 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "node-fetch": "2"
+  },
+  "engines": {
+    "node": "^18.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.4.2"

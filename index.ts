@@ -6,6 +6,10 @@ dotenv.config();
 
 const apiKey = process.env.KLAVIYO_API_KEY;
 const segmentToSuppress = process.env.KLAVIYO_SEGMENT_ID;
+const maxRetry = 10;
+let currentRetry = 0;
+let nextUrl: URL | null = null;
+let page = 1;
 
 const headers = {
   accept: "application/json",
@@ -58,12 +62,7 @@ async function suppressEmails(emailArray: string[]) {
   }
 }
 
-const maxRetry = 10;
-let currentRetry = 0;
-let nextUrl: URL | null = null;
-let page = 1;
-
-const run = async (url?: string) => {
+const run = async () => {
   while (nextUrl || currentRetry < maxRetry) {
     try {
       const { emails, nextPageUrl } = await fetchEmails(
