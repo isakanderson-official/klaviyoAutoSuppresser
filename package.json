@@ -1,20 +1,35 @@
 {
   "name": "klaviyo-auto-suppresser",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.mjs",
   "author": "Isak Anderson",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "start": "tsc && node index.js"
+    "start": "tsc && node dist/src/index.mjs",
+    "lint": "eslint --ext .ts ."
   },
   "dependencies": {
     "dotenv": "^16.3.1",
+    "husky": "^8.0.3",
     "node-fetch": "2"
   },
   "engines": {
     "node": "^18.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.4.2"
+    "@types/node": "^20.4.2",
+    "@types/node-fetch": "^2.6.4",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "husky":{
+"hooks":{
+  "pre-commit": "yarn lint"
+}
   }
 }
